@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Faculty Dashboard - SmartAttend</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f9;
+
+            color: #222;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            background: #182858;
+
+            color: white;
+
+            padding: 16px 30px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .navbar h2 {
+
+            margin: 0;
+
+            font-size: 22px;
+        }
+
+
+        .faculty-name {
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1100px;
+
+            margin: 30px auto;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        .navigation {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 25px;
+        }
+
+
+        .nav-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 11px 17px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                transform 0.15s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .nav-button:hover {
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .nav-button:active {
+
+            transform: scale(0.97);
+        }
+
+
+        .dashboard-button {
+
+            background: #182858;
+        }
+
+
+        .dashboard-button:hover {
+
+            background: #263b7a;
+        }
+
+
+        .select-class-button {
+
+            background: #6f42c1;
+        }
+
+
+        .select-class-button:hover {
+
+            background: #59339d;
+        }
+
+
+        .history-button {
+
+            background: #188038;
+        }
+
+
+        .history-button:hover {
+
+            background: #146c2e;
+        }
+
+
+        /* =====================================================
+           PAGE TITLE
+        ===================================================== */
+
+        .page-title {
+
+            margin-bottom: 8px;
+
+            color: #182858;
+        }
+
+
+        .page-description {
+
+            color: #666;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+           ASSIGNMENT CARD
+        ===================================================== */
+
+        .assignment-card {
+
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .assignment-card h2 {
+
+            margin-top: 0;
+
+            color: #182858;
+        }
+
+
+        /* =====================================================
+           DETAILS
+        ===================================================== */
+
+        .details {
+
+            margin-top: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        .details strong {
+
+            color: #333;
+        }
+
+
+        /* =====================================================
+           PERIOD
+        ===================================================== */
+
+        .period-section {
+
+            margin-top: 20px;
+        }
+
+
+        .period-section label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        .period-select {
+
+            padding: 10px;
+
+            width: 180px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            font-size: 15px;
+
+            background: white;
+
+            cursor: pointer;
+        }
+
+
+        .period-select:focus {
+
+            outline: none;
+
+            border-color: #182858;
+        }
+
+
+        /* =====================================================
+           START ATTENDANCE
+        ===================================================== */
+
+        .start-button {
+
+            display: block;
+
+            margin-top: 18px;
+
+            padding: 11px 20px;
+
+            background: #182858;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            transition:
+                background 0.2s ease,
+                transform 0.15s ease;
+        }
+
+
+        .start-button:hover {
+
+            background: #263b7a;
+
+            transform: translateY(-1px);
+        }
+
+
+        .start-button:active {
+
+            transform: scale(0.97);
+        }
+
+
+        .start-button:disabled {
+
+            background: #999;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* =====================================================
+           ACTION BUTTONS
+        ===================================================== */
+
+        .action-buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin-top: 18px;
+        }
+
+
+        /* =====================================================
+           VIEW ATTENDANCE
+        ===================================================== */
+
+        .view-attendance-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 6px;
+
+            padding: 11px 20px;
+
+            background: #2d7d46;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                transform 0.15s ease,
+                box-shadow 0.2s ease;
+
+            box-shadow:
+                0 2px 5px rgba(0, 0, 0, 0.12);
+        }
+
+
+        .view-attendance-button:hover {
+
+            background: #236338;
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .view-attendance-button:active {
+
+            transform: scale(0.97);
+        }
+
+
+        /* =====================================================
+           END ATTENDANCE
+        ===================================================== */
+
+        .end-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 6px;
+
+            padding: 11px 20px;
+
+            background: #dc3545;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                transform 0.15s ease,
+                box-shadow 0.2s ease;
+
+            box-shadow:
+                0 2px 5px rgba(0, 0, 0, 0.12);
+        }
+
+
+        .end-button:hover {
+
+            background: #b02a37;
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .end-button:active {
+
+            transform: scale(0.97);
+        }
+
+
+        .end-button:disabled {
+
+            background: #999;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+            box-shadow: none;
+        }
+
+
+        /* =====================================================
+           ENDED BUTTON
+        ===================================================== */
+
+        .ended-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 11px 20px;
+
+            background: #777;
+
+            color: white;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           OTP
+        ===================================================== */
+
+        .otp-box {
+
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 25px;
+
+            background: #eef3f9;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            border: 1px solid #e0e6ef;
+        }
+
+
+        .otp-title {
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+            color: #182858;
+        }
+
+
+        .otp {
+
+            font-size: 42px;
+
+            font-weight: bold;
+
+            letter-spacing: 10px;
+
+            color: #182858;
+
+            margin: 15px 0;
+
+            user-select: text;
+        }
+
+
+        .expiry {
+
+            color: #666;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        .error-message {
+
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            background: #ffe5e5;
+
+            color: #b00020;
+
+            border-radius: 6px;
+        }
+
+
+        /* =====================================================
+           SUCCESS
+        ===================================================== */
+
+        .success-message {
+
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            background: #d4edda;
+
+            color: #155724;
+
+            border-radius: 6px;
+        }
+
+
+        /* =====================================================
+           EMPTY
+        ===================================================== */
+
+        .empty {
+
+            background: white;
+
+            padding: 40px;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 3px 12px rgba(0,0,0,0.08);
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .container {
+
+                width: 94%;
+            }
+
+
+            .navbar {
+
+                padding: 15px;
+
+                flex-direction: column;
+
+                gap: 8px;
+
+                align-items: flex-start;
+            }
+
+
+            .assignment-card {
+
+                padding: 18px;
+            }
+
+
+            .otp {
+
+                font-size: 30px;
+
+                letter-spacing: 6px;
+            }
+
+
+            .navigation {
+
+                flex-direction: column;
+            }
+
+
+            .nav-button {
+
+                width: 100%;
+            }
+
+
+            .action-buttons {
+
+                flex-direction: column;
+            }
+
+
+            .view-attendance-button,
+            .end-button,
+            .ended-button {
+
+                width: 100%;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<div class="navbar">
+
+    <h2>
+        SmartAttend
+    </h2>
+
+
+    <div class="faculty-name">
+
+        Faculty:
+
+        {{ request.user.get_full_name|default:request.user }}
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MAIN CONTAINER
+===================================================== -->
+
+<div class="container">
+
+
+    <!-- =================================================
+         NAVIGATION
+    ================================================== -->
+
+    <div class="navigation">
+
+
+        <!-- DASHBOARD -->
+
+        <a
+            href="{% url 'faculty_dashboard' %}"
+            class="nav-button dashboard-button"
+        >
+
+            🏠 Dashboard
+
+        </a>
+
+
+        <!-- SELECT CLASS -->
+
+        <a
+            href="{% url 'select_class' %}"
+            class="nav-button select-class-button"
+        >
+
+            📚 Select Class
+
+        </a>
+
+
+        <!-- ATTENDANCE HISTORY -->
+
+        <a
+            href="{% url 'faculty_attendance_history' %}"
+            class="nav-button history-button"
+        >
+
+            📊 Attendance History
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         PAGE TITLE
+    ================================================== -->
+
+    <h1 class="page-title">
+
+        Faculty Dashboard
+
+    </h1>
+
+
+    <p class="page-description">
+
+        Select your class and start an attendance session.
+
+    </p>
+
+
+
+    <!-- =================================================
+         ASSIGNMENTS
+    ================================================== -->
+
+    {% for assignment in assignments %}
+
+
+    <div class="assignment-card">
+
+
+        <!-- SUBJECT -->
+
+        <h2>
+
+            {{ assignment.subject.name }}
+
+        </h2>
+
+
+
+        <!-- DETAILS -->
+
+        <div class="details">
+
+
+            <div>
+
+                <strong>
+                    Subject Code:
+                </strong>
+
+                {{ assignment.subject.code }}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Class:
+                </strong>
+
+                {{ assignment.class_section }}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Academic Year:
+                </strong>
+
+                {{ assignment.academic_year }}
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             PERIOD
+        ================================================== -->
+
+        <div class="period-section">
+
+
+            <label
+                for="period-{{ assignment.id }}"
+            >
+
+                Select Period
+
+            </label>
+
+
+            <select
+                id="period-{{ assignment.id }}"
+                class="period-select"
+            >
+
+                <option value="1">
+                    Period 1
+                </option>
+
+                <option value="2">
+                    Period 2
+                </option>
+
+                <option value="3">
+                    Period 3
+                </option>
+
+                <option value="4">
+                    Period 4
+                </option>
+
+                <option value="5">
+                    Period 5
+                </option>
+
+                <option value="6">
+                    Period 6
+                </option>
+
+                <option value="7">
+                    Period 7
+                </option>
+
+                <option value="8">
+                    Period 8
+                </option>
+
+            </select>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             START ATTENDANCE
+        ================================================== -->
+
+        <button
+            type="button"
+            class="start-button"
+            id="start-button-{{ assignment.id }}"
+            onclick="startAttendance({{ assignment.id }})"
+        >
+
+            ▶ Start Attendance
+
+        </button>
+
+
+
+        <!-- ERROR -->
+
+        <div
+            class="error-message"
+            id="error-{{ assignment.id }}"
+        ></div>
+
+
+
+        <!-- SUCCESS -->
+
+        <div
+            class="success-message"
+            id="success-{{ assignment.id }}"
+        ></div>
+
+
+
+        <!-- =================================================
+             OTP
+        ================================================== -->
+
+        <div
+            class="otp-box"
+            id="otp-{{ assignment.id }}"
+        >
+
+            <div class="otp-title">
+
+                Attendance Started
+
+            </div>
+
+
+            <p>
+
+                Share this OTP with your students.
+
+            </p>
+
+
+            <div
+                class="otp"
+                id="otp-number-{{ assignment.id }}"
+            >
+
+                ------
+
+            </div>
+
+
+            <div
+                class="expiry"
+                id="expiry-{{ assignment.id }}"
+            >
+
+                OTP is active
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SESSION ACTIONS
+        ================================================== -->
+
+        {% if assignment.latest_session %}
+
+
+        <div class="action-buttons">
+
+
+            <!-- VIEW ATTENDANCE -->
+
+            <a
+                href="{% url 'faculty_attendance_records' assignment.latest_session.id %}"
+                class="view-attendance-button"
+            >
+
+                👁 View Attendance
+
+            </a>
+
+
+
+            <!-- END ATTENDANCE -->
+
+            {% if assignment.latest_session.is_active %}
+
+
+            <button
+                type="button"
+                class="end-button"
+                id="end-button-{{ assignment.id }}"
+                onclick="endAttendance({{ assignment.latest_session.id }})"
+            >
+
+                🔴 End Attendance
+
+            </button>
+
+
+            {% else %}
+
+
+            <span class="ended-button">
+
+                ✓ Attendance Ended
+
+            </span>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+    {% empty %}
+
+
+    <!-- =================================================
+         NO ASSIGNMENTS
+    ================================================== -->
+
+    <div class="empty">
+
+
+        <h2>
+
+            No Teaching Assignments Found
+
+        </h2>
+
+
+        <p style="margin-top: 10px;">
+
+            You currently don't have any teaching assignments.
+
+        </p>
+
+
+        <p style="margin-top: 20px;">
+
+            Click
+
+            <strong>
+                📚 Select Class
+            </strong>
+
+            above to select a class.
+
+        </p>
+
+
+    </div>
+
+
+    {% endfor %}
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   GET CSRF COOKIE
+===================================================== */
+
+function getCookie(name) {
+
+    let cookieValue = null;
+
+
+    if (
+        document.cookie &&
+        document.cookie !== ''
+    ) {
+
+        const cookies =
+            document.cookie.split(';');
+
+
+        for (
+            let i = 0;
+            i < cookies.length;
+            i++
+        ) {
+
+            const cookie =
+                cookies[i].trim();
+
+
+            if (
+                cookie.substring(
+                    0,
+                    name.length + 1
+                ) === (name + '=')
+            ) {
+
+                cookieValue =
+                    decodeURIComponent(
+                        cookie.substring(
+                            name.length + 1
+                        )
+                    );
+
+                break;
+
+            }
+
+        }
+
+    }
+
+
+    return cookieValue;
+
+}
+
+
+
+/* =====================================================
+   START ATTENDANCE
+===================================================== */
+
+async function startAttendance(assignmentId) {
+
+
+    const button =
+        document.getElementById(
+            "start-button-" + assignmentId
+        );
+
+
+    const periodSelect =
+        document.getElementById(
+            "period-" + assignmentId
+        );
+
+
+    const otpBox =
+        document.getElementById(
+            "otp-" + assignmentId
+        );
+
+
+    const otpNumber =
+        document.getElementById(
+            "otp-number-" + assignmentId
+        );
+
+
+    const expiry =
+        document.getElementById(
+            "expiry-" + assignmentId
+        );
+
+
+    const errorBox =
+        document.getElementById(
+            "error-" + assignmentId
+        );
+
+
+    const successBox =
+        document.getElementById(
+            "success-" + assignmentId
+        );
+
+
+    const period =
+        periodSelect.value;
+
+
+
+    /* Clear old messages */
+
+    errorBox.style.display = "none";
+
+    errorBox.innerHTML = "";
+
+
+    successBox.style.display = "none";
+
+    successBox.innerHTML = "";
+
+
+
+    /* Disable start button */
+
+    button.disabled = true;
+
+    button.innerText = "Starting...";
+
+
+
+    try {
+
+
+        const response = await fetch(
+
+            `/attendance/start/${assignmentId}/`,
+
+            {
+
+                method: "POST",
+
+                headers: {
+
+                    "X-CSRFToken":
+                        getCookie("csrftoken"),
+
+                    "Content-Type":
+                        "application/x-www-form-urlencoded"
+
+                },
+
+                body:
+                    "period=" +
+                    encodeURIComponent(period)
+
+            }
+
+        );
+
+
+
+        const data =
+            await response.json();
+
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Unable to start attendance."
+            );
+
+        }
+
+
+
+        /* =================================================
+           SHOW OTP
+        ================================================= */
+
+        otpNumber.innerText =
+            data.otp;
+
+        otpBox.style.display =
+            "block";
+
+
+
+        /* =================================================
+           SHOW EXPIRY
+        ================================================= */
+
+        if (data.expires_at) {
+
+            const expiryTime =
+                new Date(data.expires_at);
+
+
+            expiry.innerText =
+                "OTP expires at: " +
+                expiryTime.toLocaleTimeString();
+
+        }
+
+
+
+        /* =================================================
+           SUCCESS MESSAGE
+        ================================================= */
+
+        successBox.innerText =
+            "Attendance started successfully.";
+
+        successBox.style.display =
+            "block";
+
+
+        button.innerText =
+            "Attendance Started";
+
+
+
+        /* =================================================
+           FIND EXISTING ACTION BUTTONS
+        ================================================= */
+
+        const assignmentCard =
+            button.closest(".assignment-card");
+
+
+        let actionButtons =
+            assignmentCard.querySelector(
+                ".action-buttons"
+            );
+
+
+
+        /*
+         * If action-buttons already exists,
+         * DON'T create another one.
+         */
+
+        if (!actionButtons) {
+
+            actionButtons =
+                document.createElement("div");
+
+
+            actionButtons.className =
+                "action-buttons";
+
+
+            otpBox.insertAdjacentElement(
+                "afterend",
+                actionButtons
+            );
+
+        }
+
+
+
+        /* =================================================
+           REMOVE OLD DYNAMIC BUTTONS
+        ================================================= */
+
+        const oldDynamicButtons =
+            actionButtons.querySelectorAll(
+                ".dynamic-action"
+            );
+
+
+        oldDynamicButtons.forEach(
+            btn => btn.remove()
+        );
+
+
+
+        /* =================================================
+           FIND EXISTING VIEW ATTENDANCE BUTTON
+        ================================================= */
+
+        let viewButton =
+            actionButtons.querySelector(
+                ".view-attendance-button"
+            );
+
+
+
+        /*
+         * If View Attendance already exists,
+         * simply update its URL.
+         */
+
+        if (viewButton) {
+
+            viewButton.href =
+                `/attendance/faculty/attendance/${data.session_id}/`;
+
+        }
+
+
+
+        /*
+         * If there is no View Attendance button,
+         * create exactly ONE.
+         */
+
+        else {
+
+            viewButton =
+                document.createElement("a");
+
+
+            viewButton.href =
+                `/attendance/faculty/attendance/${data.session_id}/`;
+
+
+            viewButton.className =
+                "view-attendance-button";
+
+
+            viewButton.innerHTML =
+                "👁 View Attendance";
+
+
+            actionButtons.appendChild(
+                viewButton
+            );
+
+        }
+
+
+
+        /* =================================================
+           REMOVE OLD END BUTTONS
+        ================================================= */
+
+        const oldEndButtons =
+            actionButtons.querySelectorAll(
+                ".end-button"
+            );
+
+
+        oldEndButtons.forEach(
+            btn => btn.remove()
+        );
+
+
+
+        /* =================================================
+           CREATE ONE END ATTENDANCE BUTTON
+        ================================================= */
+
+        const endButton =
+            document.createElement("button");
+
+
+        endButton.type =
+            "button";
+
+
+        endButton.className =
+            "end-button dynamic-action";
+
+
+        endButton.innerHTML =
+            "🔴 End Attendance";
+
+
+        endButton.onclick =
+            function () {
+
+                endAttendance(
+                    data.session_id
+                );
+
+            };
+
+
+        actionButtons.appendChild(
+            endButton
+        );
+
+
+    }
+
+
+    catch (error) {
+
+        console.error(error);
+
+
+        errorBox.innerText =
+            error.message ||
+            "Something went wrong.";
+
+
+        errorBox.style.display =
+            "block";
+
+
+        button.disabled =
+            false;
+
+
+        button.innerText =
+            "▶ Start Attendance";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   END ATTENDANCE
+===================================================== */
+
+async function endAttendance(sessionId) {
+
+
+    const confirmed =
+        confirm(
+
+            "Are you sure you want to end this attendance session?\n\n" +
+
+            "Students who have not marked attendance will be marked ABSENT."
+
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+
+    /* Find the clicked button */
+
+    const button =
+        document.querySelector(
+            `.end-button[onclick*="${sessionId}"]`
+        );
+
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.innerText =
+            "Ending...";
+
+    }
+
+
+
+    try {
+
+
+        const response =
+            await fetch(
+
+                "{% url 'end_attendance' 0 %}"
+                    .replace("0", sessionId),
+
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "X-CSRFToken":
+                            getCookie("csrftoken")
+
+                    }
+
+                }
+
+            );
+
+
+
+        const data =
+            await response.json();
+
+
+
+        /* =================================================
+           SUCCESS
+        ================================================= */
+
+        if (
+            response.ok &&
+            data.message
+        ) {
+
+
+            alert(
+
+                "✓ " +
+                data.message +
+                "\n\n" +
+                "Absent students: " +
+                data.absent_count
+
+            );
+
+
+
+            /*
+             * Return to faculty dashboard.
+             */
+
+            window.location.href =
+                "{% url 'faculty_dashboard' %}";
+
+
+            return;
+
+        }
+
+
+
+        /* =================================================
+           ERROR
+        ================================================= */
+
+        alert(
+
+            data.error ||
+            "Unable to end attendance."
+
+        );
+
+
+        if (button) {
+
+            button.disabled = false;
+
+            button.innerText =
+                "🔴 End Attendance";
+
+        }
+
+    }
+
+
+    catch (error) {
+
+
+        console.error(error);
+
+
+        alert(
+            "Something went wrong while ending attendance."
+        );
+
+
+        if (button) {
+
+            button.disabled = false;
+
+            button.innerText =
+                "🔴 End Attendance";
+
+        }
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

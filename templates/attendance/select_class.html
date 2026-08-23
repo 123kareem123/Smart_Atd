@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Select Class - SmartAttend</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f9;
+
+            color: #222;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            background: #182858;
+
+            color: white;
+
+            padding: 16px 30px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .navbar h2 {
+
+            margin: 0;
+
+            font-size: 22px;
+        }
+
+
+        .faculty-name {
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .container {
+
+            width: 92%;
+
+            max-width: 700px;
+
+            margin: 35px auto;
+        }
+
+
+        /* =====================================================
+           BACK BUTTON
+        ===================================================== */
+
+        .back-button {
+
+            display: inline-block;
+
+            margin-bottom: 20px;
+
+            padding: 10px 17px;
+
+            background: #182858;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        .back-button:hover {
+
+            background: #263b7a;
+        }
+
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
+        .card {
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .card h1 {
+
+            margin-top: 0;
+
+            margin-bottom: 8px;
+
+            color: #182858;
+
+            text-align: center;
+        }
+
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #666;
+
+            margin-bottom: 30px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .form-group {
+
+            margin-bottom: 22px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-weight: bold;
+
+            color: #333;
+        }
+
+
+        select {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 7px;
+
+            background: white;
+
+            font-size: 15px;
+
+            cursor: pointer;
+        }
+
+
+        select:focus {
+
+            outline: none;
+
+            border-color: #182858;
+
+            box-shadow:
+                0 0 0 2px rgba(24, 40, 88, 0.1);
+        }
+
+
+        /* =====================================================
+           CONTINUE BUTTON
+        ===================================================== */
+
+        .continue-button {
+
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 5px;
+
+            background: #182858;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .continue-button:hover {
+
+            background: #263b7a;
+        }
+
+
+        /* =====================================================
+           INFORMATION BOX
+        ===================================================== */
+
+        .info-box {
+
+            margin-top: 25px;
+
+            padding: 15px;
+
+            background: #eef3ff;
+
+            border-left: 4px solid #182858;
+
+            border-radius: 6px;
+
+            color: #444;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                padding: 15px 18px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 7px;
+            }
+
+
+            .container {
+
+                width: 94%;
+
+                margin-top: 25px;
+            }
+
+
+            .card {
+
+                padding: 25px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<div class="navbar">
+
+    <h2>
+        SmartAttend
+    </h2>
+
+
+    <div class="faculty-name">
+
+        Faculty:
+
+        {{ request.user.get_full_name|default:request.user.username }}
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN CONTAINER
+===================================================== -->
+
+<div class="container">
+
+
+    <a
+        href="{% url 'faculty_dashboard' %}"
+        class="back-button"
+    >
+
+        ← Faculty Dashboard
+
+    </a>
+
+
+    <div class="card">
+
+
+        <h1>
+            Select Class
+        </h1>
+
+
+        <p class="subtitle">
+
+            Select the year, branch, section and
+            semester for which you want to take
+            attendance.
+
+        </p>
+
+
+        <!-- =================================================
+             STEP 1 — YEAR
+        ================================================== -->
+
+        <form
+            method="GET"
+            action="{% url 'select_class' %}"
+        >
+
+            <div class="form-group">
+
+                <label for="year">
+
+                    1. Select Year
+
+                </label>
+
+
+                <select
+                    name="year"
+                    id="year"
+                    required
+                    onchange="this.form.submit()"
+                >
+
+                    <option value="">
+
+                        Select Year
+
+                    </option>
+
+
+                    <option
+                        value="1"
+
+                        {% if selected_year == "1" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        1st Year
+
+                    </option>
+
+
+                    <option
+                        value="2"
+
+                        {% if selected_year == "2" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        2nd Year
+
+                    </option>
+
+
+                    <option
+                        value="3"
+
+                        {% if selected_year == "3" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        3rd Year
+
+                    </option>
+
+
+                    <option
+                        value="4"
+
+                        {% if selected_year == "4" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        4th Year
+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </form>
+
+
+        <!-- =================================================
+             STEP 2 — BRANCH
+        ================================================== -->
+
+        {% if selected_year %}
+
+        <form
+            method="GET"
+            action="{% url 'select_class' %}"
+        >
+
+            <input
+                type="hidden"
+                name="year"
+                value="{{ selected_year }}"
+            >
+
+
+            <div class="form-group">
+
+                <label for="department">
+
+                    2. Select Branch
+
+                </label>
+
+
+                <select
+                    name="department"
+                    id="department"
+                    required
+                    onchange="this.form.submit()"
+                >
+
+                    <option value="">
+
+                        Select Branch
+
+                    </option>
+
+
+                    {% for department in departments %}
+
+                    <option
+                        value="{{ department.id }}"
+
+                        {% if selected_department == department.id|stringformat:"s" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        {{ department.name }}
+                        ({{ department.code }})
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+        </form>
+
+        {% endif %}
+
+
+        <!-- =================================================
+             STEP 3 + STEP 4
+             SECTION + SEMESTER
+        ================================================== -->
+
+        {% if selected_year and selected_department %}
+
+        <form
+            method="GET"
+            action="{% url 'select_class' %}"
+        >
+
+            <!-- =============================================
+                 KEEP YEAR
+            ============================================== -->
+
+            <input
+                type="hidden"
+                name="year"
+                value="{{ selected_year }}"
+            >
+
+
+            <!-- =============================================
+                 KEEP DEPARTMENT
+            ============================================== -->
+
+            <input
+                type="hidden"
+                name="department"
+                value="{{ selected_department }}"
+            >
+
+
+            <!-- =============================================
+                 STEP 3 — SECTION
+            ============================================== -->
+
+            <div class="form-group">
+
+                <label for="section">
+
+                    3. Select Section
+
+                </label>
+
+
+                <select
+                    name="section"
+                    id="section"
+                    required
+                >
+
+                    <option value="">
+
+                        Select Section
+
+                    </option>
+
+
+                    {% for class_section in sections %}
+
+                    <option
+                        value="{{ class_section.id }}"
+
+                        {% if selected_section == class_section.id|stringformat:"s" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        Section {{ class_section.section }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <!-- =============================================
+                 STEP 4 — SEMESTER
+            ============================================== -->
+
+            <div class="form-group">
+
+                <label for="semester">
+
+                    4. Select Semester
+
+                </label>
+
+
+                <select
+                    name="semester"
+                    id="semester"
+                    required
+                >
+
+                    <option value="">
+
+                        Select Semester
+
+                    </option>
+
+
+                    <!-- =====================================
+                         YEAR 1
+                         SEMESTER 1, 2
+                    ====================================== -->
+
+                    {% if selected_year == "1" %}
+
+                    <option
+                        value="1"
+
+                        {% if selected_semester == "1" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        Semester 1
+
+                    </option>
+
+
+                    <option
+                        value="2"
+
+                        {% if selected_semester == "2" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        Semester 2
+
+                    </option>
+
+
+                    <!-- =====================================
+                         YEAR 2
+                         SEMESTER 3, 4
+                    ====================================== -->
+
+                    {% elif selected_year == "2" %}
+
+                    <option
+                        value="3"
+
+                        {% if selected_semester == "3" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        Semester 3
+
+                    </option>
+
+
+                    <option
+                        value="4"
+
+                        {% if selected_semester == "4" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        Semester 4
+
+                    </option>
+
+
+                    <!-- =====================================
+                         YEAR 3
+                         SEMESTER 5, 6
+                    ====================================== -->
+
+                    {% elif selected_year == "3" %}
+
+                    <option
+                        value="5"
+
+                        {% if selected_semester == "5" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        Semester 5
+
+                    </option>
+
+
+                    <option
+                        value="6"
+
+                        {% if selected_semester == "6" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        Semester 6
+
+                    </option>
+
+
+                    <!-- =====================================
+                         YEAR 4
+                         SEMESTER 7, 8
+                    ====================================== -->
+
+                    {% elif selected_year == "4" %}
+
+                    <option
+                        value="7"
+
+                        {% if selected_semester == "7" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        Semester 7
+
+                    </option>
+
+
+                    <option
+                        value="8"
+
+                        {% if selected_semester == "8" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        Semester 8
+
+                    </option>
+
+                    {% endif %}
+
+                </select>
+
+            </div>
+
+
+            <!-- =============================================
+                 CONTINUE
+            ============================================== -->
+
+            <button
+                type="submit"
+                class="continue-button"
+            >
+
+                Continue →
+
+            </button>
+
+        </form>
+
+        {% endif %}
+
+
+        <!-- =================================================
+             INFORMATION
+        ================================================== -->
+
+        <div class="info-box">
+
+            <strong>
+                How it works:
+            </strong>
+
+            <br><br>
+
+            <strong>
+                Step 1:
+            </strong>
+
+            Select the year.
+
+            <br>
+
+            <strong>
+                Step 2:
+            </strong>
+
+            Select the branch.
+
+            <br>
+
+            <strong>
+                Step 3:
+            </strong>
+
+            Select the class section.
+
+            <br>
+
+            <strong>
+                Step 4:
+            </strong>
+
+            Select the semester.
+
+            <br><br>
+
+            The subjects matching the selected
+            year, branch and semester will then
+            appear automatically.
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

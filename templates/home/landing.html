@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SmartAttend</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #182858,
+                    #2d4a9b
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            color: #222;
+        }
+
+        .container {
+
+            width: 90%;
+
+            max-width: 900px;
+
+            text-align: center;
+        }
+
+        .logo {
+
+            color: white;
+
+            font-size: 42px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+
+            color: #dfe6ff;
+
+            font-size: 18px;
+
+            margin-bottom: 40px;
+        }
+
+        .login-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+        }
+
+        .login-card {
+
+            background: white;
+
+            padding: 35px 25px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.2);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .login-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.25);
+        }
+
+        .icon {
+
+            font-size: 55px;
+
+            margin-bottom: 15px;
+        }
+
+        .login-card h2 {
+
+            color: #182858;
+
+            margin-bottom: 10px;
+        }
+
+        .login-card p {
+
+            color: #666;
+
+            line-height: 1.5;
+
+            margin-bottom: 25px;
+        }
+
+        .login-button {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 13px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .faculty-button {
+
+            background: #182858;
+        }
+
+        .student-button {
+
+            background: #188038;
+        }
+
+        .login-button:hover {
+
+            opacity: 0.85;
+
+            transform: translateY(-1px);
+        }
+
+        .footer {
+
+            color: #dfe6ff;
+
+            margin-top: 30px;
+
+            font-size: 13px;
+        }
+
+        @media (max-width: 650px) {
+
+            .login-container {
+
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+
+                font-size: 34px;
+            }
+
+            .subtitle {
+
+                font-size: 16px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="logo">
+
+        SmartAttend
+
+    </div>
+
+
+    <div class="subtitle">
+
+        Smart Attendance Management System
+
+    </div>
+
+
+    <div class="login-container">
+
+
+        <!-- FACULTY -->
+
+        <div class="login-card">
+
+
+            <div class="icon">
+                👨‍🏫
+            </div>
+
+
+            <h2>
+                Faculty
+            </h2>
+
+
+            <p>
+
+                Login to manage classes,
+                start attendance sessions,
+                generate OTPs and view
+                attendance reports.
+
+            </p>
+
+
+            <a
+                href="{% url 'login' %}?role=faculty"
+                class="login-button faculty-button"
+            >
+
+                Login as Faculty
+
+            </a>
+
+
+        </div>
+
+
+        <!-- STUDENT -->
+
+        <div class="login-card">
+
+
+            <div class="icon">
+                👨‍🎓
+            </div>
+
+
+            <h2>
+                Student
+            </h2>
+
+
+            <p>
+
+                Login to mark attendance
+                using the OTP provided by
+                your faculty and view your
+                attendance history.
+
+            </p>
+
+
+            <a
+                href="{% url 'login' %}?role=student"
+                class="login-button student-button"
+            >
+
+                Login as Student
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer">
+
+        © SmartAttend — Smart Attendance Management System
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Attendance History - SmartAttend</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f9;
+
+            color: #222;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+
+            background: #182858;
+
+            color: white;
+
+            padding: 16px 30px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .navbar h2 {
+            margin: 0;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+
+            width: 92%;
+
+            max-width: 1100px;
+
+            margin: 30px auto;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navigation {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 25px;
+        }
+
+
+        .nav-button {
+
+            display: inline-block;
+
+            padding: 10px 16px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+        }
+
+
+        .dashboard {
+
+            background: #182858;
+        }
+
+
+        .nav-button:hover {
+
+            opacity: 0.85;
+        }
+
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .page-header {
+
+            margin-bottom: 25px;
+        }
+
+
+        .page-header h1 {
+
+            color: #182858;
+
+            margin-bottom: 8px;
+        }
+
+
+        .page-header p {
+
+            color: #666;
+        }
+
+
+        /* =========================
+           SESSION CARD
+        ========================= */
+
+        .session-card {
+
+            background: white;
+
+            padding: 22px;
+
+            margin-bottom: 18px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 3px 12px rgba(0,0,0,0.08);
+        }
+
+
+        .session-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .subject {
+
+            color: #182858;
+
+            margin: 0;
+        }
+
+
+        .details {
+
+            margin-top: 15px;
+
+            line-height: 1.9;
+        }
+
+
+        .details strong {
+
+            color: #333;
+        }
+
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status {
+
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        .active {
+
+            background: #d4edda;
+
+            color: #155724;
+        }
+
+
+        .ended {
+
+            background: #eeeeee;
+
+            color: #555;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .view-button {
+
+            display: inline-block;
+
+            margin-top: 18px;
+
+            padding: 10px 18px;
+
+            background: #2d7d46;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+        }
+
+
+        .view-button:hover {
+
+            background: #236338;
+        }
+
+
+        /* =========================
+           EMPTY
+        ========================= */
+
+        .empty {
+
+            background: white;
+
+            padding: 45px;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 3px 12px rgba(0,0,0,0.08);
+
+            color: #666;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+
+                width: 94%;
+            }
+
+
+            .navbar {
+
+                padding: 15px;
+            }
+
+
+            .session-card {
+
+                padding: 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<div class="navbar">
+
+
+    <h2>
+        SmartAttend
+    </h2>
+
+
+    <div>
+
+        Faculty:
+        {{ request.user.get_full_name|default:request.user }}
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="container">
+
+
+    <!-- =================================================
+         NAVIGATION
+    ================================================== -->
+
+    <div class="navigation">
+
+
+        <a
+            href="{% url 'faculty_dashboard' %}"
+            class="nav-button dashboard"
+        >
+
+            ← Faculty Dashboard
+
+        </a>
+
+
+    </div>
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <div class="page-header">
+
+
+        <h1>
+
+            Attendance History
+
+        </h1>
+
+
+        <p>
+
+            View all attendance sessions created by you.
+
+        </p>
+
+
+    </div>
+
+
+    <!-- =================================================
+         SESSIONS
+    ================================================== -->
+
+    {% for session in sessions %}
+
+
+    <div class="session-card">
+
+
+        <div class="session-header">
+
+
+            <h2 class="subject">
+
+                {{ session.teaching_assignment.subject.name }}
+
+            </h2>
+
+
+            {% if session.is_active %}
+
+
+                <span class="status active">
+
+                    ● ACTIVE
+
+                </span>
+
+
+            {% else %}
+
+
+                <span class="status ended">
+
+                    ● ENDED
+
+                </span>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+        <!-- DETAILS -->
+
+        <div class="details">
+
+
+            <div>
+
+                <strong>
+                    Subject Code:
+                </strong>
+
+                {{ session.teaching_assignment.subject.code }}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Class:
+                </strong>
+
+                {{ session.teaching_assignment.class_section }}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Period:
+                </strong>
+
+                {{ session.period }}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Date:
+                </strong>
+
+                {{ session.date }}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Created:
+                </strong>
+
+                {{ session.created_at|date:"d M Y, h:i A" }}
+
+            </div>
+
+
+        </div>
+
+
+        <!-- VIEW -->
+
+        <a
+            href="{% url 'faculty_attendance_records' session.id %}"
+            class="view-button"
+        >
+
+            👁 View Attendance
+
+        </a>
+
+
+    </div>
+
+
+    {% empty %}
+
+
+    <!-- =================================================
+         NO SESSIONS
+    ================================================== -->
+
+    <div class="empty">
+
+
+        <h2>
+
+            No Attendance Sessions
+
+        </h2>
+
+
+        <p style="margin-top:10px;">
+
+            You haven't created any attendance sessions yet.
+
+        </p>
+
+
+    </div>
+
+
+    {% endfor %}
+
+
+</div>
+
+
+</body>
+
+</html>

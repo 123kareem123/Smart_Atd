@@ -1,0 +1,337 @@
+﻿year,semester,department_code,subject_code,subject_name
+1,1,CHEM,CH101,Mathematics-I
+1,1,CHEM,CH102,Physics
+1,1,CHEM,CH103,Chemistry-I
+1,1,CHEM,CH104,Engineering Graphics
+1,1,CHEM,CH105,Programming for Problem Solving
+1,1,CHEM,CH106,Thermodynamics-I
+1,1,CIV,CE101,Mathematics-I
+1,1,CIV,CE102,Physics
+1,1,CIV,CE103,Chemistry-I
+1,1,CIV,CE104,Programming for Problem Solving
+1,1,CIV,CE105,Engineering Graphics & Design
+1,1,CIV,CE106,Basic Electrical Engineering
+1,1,CSE,CS101,Mathematics-I
+1,1,CSE,CS102,Physics
+1,1,CSE,CS103,Chemistry-I
+1,1,CSE,CS104,Programming for Problem Solving
+1,1,CSE,CS105,Engineering Graphics & Design
+1,1,CSE,CS106,Basic Electrical Engineering
+1,1,ECE,EC101,Mathematics-I
+1,1,ECE,EC102,Physics
+1,1,ECE,EC103,Chemistry-I
+1,1,ECE,EC104,Programming for Problem Solving
+1,1,ECE,EC105,Engineering Graphics & Design
+1,1,ECE,EC106,Basic Electrical Engineering
+1,1,EEE,EE101,Mathematics-I
+1,1,EEE,EE102,Physics
+1,1,EEE,EE103,Chemistry-I
+1,1,EEE,EE104,Programming for Problem Solving
+1,1,EEE,EE105,Engineering Graphics & Design
+1,1,EEE,EE106,Basic Electrical Engineering
+1,1,MECH,ME101,Mathematics-I
+1,1,MECH,ME102,Physics
+1,1,MECH,ME103,Chemistry-I
+1,1,MECH,ME104,Programming for Problem Solving
+1,1,MECH,ME105,Engineering Graphics & Design
+1,1,MECH,ME106,Basic Electrical Engineering
+1,1,MET,MT101,Mathematics-I
+1,1,MET,MT102,Physics
+1,1,MET,MT103,Chemistry-I
+1,1,MET,MT104,Programming for Problem Solving
+1,1,MET,MT105,Engineering Graphics & Design
+1,1,MET,MT106,Basic Electrical Engineering
+1,2,CHEM,CH201,Mathematics-II
+1,2,CHEM,CH202,Chemistry-II
+1,2,CHEM,CH203,Electrical & Electronics Engineering
+1,2,CHEM,CH204,Engineering & Solid Mechanics
+1,2,CHEM,CH205,Physics Laboratory
+1,2,CHEM,CH206,Chemistry Laboratory
+1,2,CIV,CE201,Mathematics-II
+1,2,CIV,CE202,English / Communication Skills
+1,2,CIV,CE203,Workshop / Manufacturing Practices
+1,2,CIV,CE204,Physics Laboratory
+1,2,CIV,CE205,Chemistry Laboratory
+1,2,CIV,CE206,Programming Laboratory
+1,2,CSE,CS201,Mathematics-II
+1,2,CSE,CS202,English / Communication Skills
+1,2,CSE,CS203,Workshop / Manufacturing Practices
+1,2,CSE,CS204,Physics Laboratory
+1,2,CSE,CS205,Chemistry Laboratory
+1,2,CSE,CS206,Programming Laboratory
+1,2,ECE,EC201,Mathematics-II
+1,2,ECE,EC202,English / Communication Skills
+1,2,ECE,EC203,Workshop / Manufacturing Practices
+1,2,ECE,EC204,Physics Laboratory
+1,2,ECE,EC205,Chemistry Laboratory
+1,2,ECE,EC206,Programming Laboratory
+1,2,EEE,EE201,Mathematics-II
+1,2,EEE,EE202,English / Communication Skills
+1,2,EEE,EE203,Workshop / Manufacturing Practices
+1,2,EEE,EE204,Physics Laboratory
+1,2,EEE,EE205,Chemistry Laboratory
+1,2,EEE,EE206,Programming Laboratory
+1,2,MECH,ME201,Mathematics-II
+1,2,MECH,ME202,English / Communication Skills
+1,2,MECH,ME203,Workshop / Manufacturing Practices
+1,2,MECH,ME204,Physics Laboratory
+1,2,MECH,ME205,Chemistry Laboratory
+1,2,MECH,ME206,Programming Laboratory
+1,2,MET,MT201,Mathematics-II
+1,2,MET,MT202,English / Communication Skills
+1,2,MET,MT203,Workshop / Manufacturing Practices
+1,2,MET,MT204,Physics Laboratory
+1,2,MET,MT205,Chemistry Laboratory
+1,2,MET,MT206,Programming Laboratory
+2,3,CHEM,CH301,Material & Energy Balance Computations
+2,3,CHEM,CH302,Transport Phenomena
+2,3,CHEM,CH303,Thermodynamics-II
+2,3,CHEM,CH304,Heat Transfer
+2,3,CHEM,CH305,Mass Transfer-I
+2,3,CHEM,CH306,Fluid Mechanics
+2,3,CIV,CE301,Engineering Mechanics
+2,3,CIV,CE302,Strength of Materials-I
+2,3,CIV,CE303,Fluid Mechanics
+2,3,CIV,CE304,Surveying & Geomatics
+2,3,CIV,CE305,Building Materials & Construction
+2,3,CIV,CE306,Engineering Geology
+2,3,CSE,CS301,Data Structures
+2,3,CSE,CS302,Discrete Mathematics
+2,3,CSE,CS303,Digital Logic Design
+2,3,CSE,CS304,Computer Organization & Architecture
+2,3,CSE,CS305,Object-Oriented Programming
+2,3,CSE,CS306,Probability & Statistics
+2,3,ECE,EC301,Network Theory
+2,3,ECE,EC302,Electronic Devices & Circuits
+2,3,ECE,EC303,Signals & Systems
+2,3,ECE,EC304,Digital Electronics
+2,3,ECE,EC305,Electromagnetic Fields
+2,3,ECE,EC306,Analog Circuits
+2,3,EEE,EE301,Electrical Circuit Analysis
+2,3,EEE,EE302,Electrical Measurements & Instrumentation
+2,3,EEE,EE303,Electrical Machines-I
+2,3,EEE,EE304,Analog Electronics
+2,3,EEE,EE305,Electromagnetic Fields
+2,3,EEE,EE306,Digital Electronics
+2,3,MECH,ME301,Engineering Mechanics
+2,3,MECH,ME302,Thermodynamics
+2,3,MECH,ME303,Fluid Mechanics & Fluid Machines
+2,3,MECH,ME304,Strength of Materials
+2,3,MECH,ME305,Materials Engineering
+2,3,MECH,ME306,Manufacturing Processes-I
+2,3,MET,MT301,Engineering Mechanics
+2,3,MET,MT302,Materials Thermodynamics
+2,3,MET,MT303,Phase Transformations
+2,3,MET,MT304,Physical Metallurgy
+2,3,MET,MT305,Mechanical Properties of Materials
+2,3,MET,MT306,Materials Science
+2,4,CHEM,CH401,Numerical Methods in Chemical Engineering
+2,4,CHEM,CH402,Chemical Reaction Engineering-I
+2,4,CHEM,CH403,Mass Transfer-II
+2,4,CHEM,CH404,Chemical Engineering Laboratory-I
+2,4,CHEM,CH405,Particle & Fluid-Particle Processing
+2,4,CHEM,CH406,Process Calculations
+2,4,CIV,CE401,Strength of Materials-II
+2,4,CIV,CE402,Hydraulics
+2,4,CIV,CE403,Surveying Laboratory
+2,4,CIV,CE404,Material Testing Laboratory
+2,4,CIV,CE405,Fluid Mechanics Laboratory
+2,4,CIV,CE406,Geotechnical Engineering-I
+2,4,CSE,CS401,Operating Systems
+2,4,CSE,CS402,Database Management Systems
+2,4,CSE,CS403,Design & Analysis of Algorithms
+2,4,CSE,CS404,Data Structures Laboratory
+2,4,CSE,CS405,DBMS Laboratory
+2,4,CSE,CS406,Operating Systems Laboratory
+2,4,ECE,EC401,Probability & Random Processes
+2,4,ECE,EC402,Electronic Devices Laboratory
+2,4,ECE,EC403,Digital Electronics Laboratory
+2,4,ECE,EC404,Analog Circuits Laboratory
+2,4,ECE,EC405,Signals & Systems Laboratory
+2,4,ECE,EC406,Microprocessors & Microcontrollers
+2,4,EEE,EE401,Electrical Machines-II
+2,4,EEE,EE402,Signals & Systems
+2,4,EEE,EE403,Electrical Measurements Laboratory
+2,4,EEE,EE404,Electrical Machines Laboratory-I
+2,4,EEE,EE405,Analog Electronics Laboratory
+2,4,EEE,EE406,Power Electronics
+2,4,MECH,ME401,Applied Thermodynamics
+2,4,MECH,ME402,Kinematics & Theory of Machines
+2,4,MECH,ME403,Fluid Mechanics Laboratory
+2,4,MECH,ME404,Materials Testing Laboratory
+2,4,MECH,ME405,Manufacturing Laboratory
+2,4,MECH,ME406,Heat Transfer
+2,4,MET,MT401,Heat & Mass Transfer
+2,4,MET,MT402,Metallography
+2,4,MET,MT403,Physical Metallurgy Laboratory
+2,4,MET,MT404,Materials Testing Laboratory
+2,4,MET,MT405,Mechanical Metallurgy
+2,4,MET,MT406,Extractive Metallurgy-I
+3,5,CHEM,CH501,Chemical Reaction Engineering-II
+3,5,CHEM,CH502,Process Control
+3,5,CHEM,CH503,Process Dynamics & Control
+3,5,CHEM,CH504,Process Equipment Design
+3,5,CHEM,CH505,Process Instrumentation
+3,5,CHEM,CH506,Chemical Engineering Laboratory-II
+3,5,CIV,CE501,Structural Analysis-I
+3,5,CIV,CE502,Structural Analysis-II
+3,5,CIV,CE503,Geotechnical Engineering-II
+3,5,CIV,CE504,Transportation Engineering-I
+3,5,CIV,CE505,Transportation Engineering-II
+3,5,CIV,CE506,Concrete Technology
+3,5,CSE,CS501,Computer Networks
+3,5,CSE,CS502,Formal Languages & Automata Theory
+3,5,CSE,CS503,Compiler Design
+3,5,CSE,CS504,Software Engineering
+3,5,CSE,CS505,Web Technologies
+3,5,CSE,CS506,Artificial Intelligence
+3,5,ECE,EC501,Communication Systems
+3,5,ECE,EC502,Digital Signal Processing
+3,5,ECE,EC503,Microprocessors & Microcontrollers
+3,5,ECE,EC504,VLSI Design
+3,5,ECE,EC505,Control Systems
+3,5,ECE,EC506,Analog Communication
+3,5,EEE,EE501,Power Systems-I
+3,5,EEE,EE502,Power Systems-II
+3,5,EEE,EE503,Control Systems
+3,5,EEE,EE504,Power Electronics
+3,5,EEE,EE505,Microprocessors & Microcontrollers
+3,5,EEE,EE506,Electrical Drives
+3,5,MECH,ME501,Heat Transfer
+3,5,MECH,ME502,Design of Machine Elements-I
+3,5,MECH,ME503,Design of Machine Elements-II
+3,5,MECH,ME504,Manufacturing Processes-II
+3,5,MECH,ME505,Dynamics of Machinery
+3,5,MECH,ME506,Instrumentation & Control
+3,5,MET,MT501,Extractive Metallurgy-II
+3,5,MET,MT502,Iron Making
+3,5,MET,MT503,Steel Making
+3,5,MET,MT504,Non-Ferrous Extractive Metallurgy
+3,5,MET,MT505,Materials Characterization
+3,5,MET,MT506,Mechanical Metallurgy
+3,6,CHEM,CH601,Process Simulation
+3,6,CHEM,CH602,Petroleum & Petrochemical Technology
+3,6,CHEM,CH603,Environmental Engineering
+3,6,CHEM,CH604,Transport Phenomena Laboratory
+3,6,CHEM,CH605,Process Control Laboratory
+3,6,CHEM,CH606,Professional Elective-I
+3,6,CIV,CE601,Environmental Engineering-I
+3,6,CIV,CE602,Environmental Engineering-II
+3,6,CIV,CE603,Hydrology & Water Resources
+3,6,CIV,CE604,Concrete Technology Laboratory
+3,6,CIV,CE605,Geotechnical Engineering Laboratory
+3,6,CIV,CE606,Professional Elective-I
+3,6,CSE,CS601,Machine Learning
+3,6,CSE,CS602,Computer Networks Laboratory
+3,6,CSE,CS603,Compiler Design Laboratory
+3,6,CSE,CS604,Software Engineering Laboratory
+3,6,CSE,CS605,Professional Elective-I
+3,6,CSE,CS606,Professional Elective-II
+3,6,ECE,EC601,Digital Communication
+3,6,ECE,EC602,Antenna & Wave Propagation
+3,6,ECE,EC603,Microwave Engineering
+3,6,ECE,EC604,DSP Laboratory
+3,6,ECE,EC605,Communication Systems Laboratory
+3,6,ECE,EC606,VLSI Laboratory
+3,6,EEE,EE601,Renewable Energy Systems
+3,6,EEE,EE602,Power Systems Laboratory
+3,6,EEE,EE603,Control Systems Laboratory
+3,6,EEE,EE604,Power Electronics Laboratory
+3,6,EEE,EE605,Electrical Drives Laboratory
+3,6,EEE,EE606,Professional Elective-I
+3,6,MECH,ME601,Refrigeration & Air Conditioning
+3,6,MECH,ME602,CAD/CAM
+3,6,MECH,ME603,Mechatronics
+3,6,MECH,ME604,Machine Design Laboratory
+3,6,MECH,ME605,Heat Transfer Laboratory
+3,6,MECH,ME606,Manufacturing Laboratory
+3,6,MET,MT601,Non-Metallic Materials
+3,6,MET,MT602,Corrosion Engineering
+3,6,MET,MT603,Materials Processing
+3,6,MET,MT604,Characterization Laboratory
+3,6,MET,MT605,Metallurgical Process Laboratory
+3,6,MET,MT606,Professional Elective-I
+4,7,CHEM,CH701,Plant Design & Economics
+4,7,CHEM,CH702,Process Integration
+4,7,CHEM,CH703,Industrial Pollution Control
+4,7,CHEM,CH704,Biochemical Engineering
+4,7,CHEM,CH705,Polymer Technology
+4,7,CHEM,CH706,Food Process Engineering
+4,7,CIV,CE701,Design of Reinforced Concrete Structures
+4,7,CIV,CE702,Design of Steel Structures
+4,7,CIV,CE703,Foundation Engineering
+4,7,CIV,CE704,Construction Management
+4,7,CIV,CE705,Advanced Structural Engineering
+4,7,CIV,CE706,Pavement Design
+4,7,CSE,CS701,Cloud Computing
+4,7,CSE,CS702,Distributed Systems
+4,7,CSE,CS703,Information Security / Cyber Security
+4,7,CSE,CS704,Big Data Analytics
+4,7,CSE,CS705,Internet of Things
+4,7,CSE,CS706,Mobile Application Development
+4,7,ECE,EC701,Embedded Systems
+4,7,ECE,EC702,Wireless Communication
+4,7,ECE,EC703,Optical Communication
+4,7,ECE,EC704,RF & Microwave Engineering
+4,7,ECE,EC705,Satellite Communication
+4,7,ECE,EC706,Digital Image Processing
+4,7,EEE,EE701,High Voltage Engineering
+4,7,EEE,EE702,Switchgear & Protection
+4,7,EEE,EE703,Power System Analysis
+4,7,EEE,EE704,Power System Operation & Control
+4,7,EEE,EE705,Utilization of Electrical Energy
+4,7,EEE,EE706,Smart Grid
+4,7,MECH,ME701,Internal Combustion Engines
+4,7,MECH,ME702,Automobile Engineering
+4,7,MECH,ME703,Power Plant Engineering
+4,7,MECH,ME704,Industrial Engineering & Management
+4,7,MECH,ME705,Robotics & Automation
+4,7,MECH,ME706,Finite Element Analysis
+4,7,MET,MT701,Powder Metallurgy
+4,7,MET,MT702,Welding & Joining Technology
+4,7,MET,MT703,Casting Technology
+4,7,MET,MT704,Heat Treatment of Metals
+4,7,MET,MT705,Composite Materials
+4,7,MET,MT706,Nanomaterials
+4,8,CHEM,CH801,Energy Engineering
+4,8,CHEM,CH802,Professional Elective-II
+4,8,CHEM,CH803,Professional Elective-III
+4,8,CHEM,CH804,Open Elective-I
+4,8,CHEM,CH805,Project / Seminar
+4,8,CHEM,CH806,Major Project / Project Work
+4,8,CIV,CE801,Water Resources Engineering
+4,8,CIV,CE802,Environmental Engineering Design
+4,8,CIV,CE803,Professional Elective-II
+4,8,CIV,CE804,Open Elective-I
+4,8,CIV,CE805,Project / Seminar
+4,8,CIV,CE806,Major Project / Project Work
+4,8,CSE,CS801,Professional Elective-III
+4,8,CSE,CS802,Professional Elective-IV
+4,8,CSE,CS803,Open Elective-I
+4,8,CSE,CS804,Open Elective-II
+4,8,CSE,CS805,Project / Seminar
+4,8,CSE,CS806,Major Project / Project Work
+4,8,ECE,EC801,Professional Elective-I
+4,8,ECE,EC802,Professional Elective-II
+4,8,ECE,EC803,Open Elective-I
+4,8,ECE,EC804,Open Elective-II
+4,8,ECE,EC805,Project / Seminar
+4,8,ECE,EC806,Major Project / Project Work
+4,8,EEE,EE801,Professional Elective-II
+4,8,EEE,EE802,Professional Elective-III
+4,8,EEE,EE803,Open Elective-I
+4,8,EEE,EE804,Open Elective-II
+4,8,EEE,EE805,Project / Seminar
+4,8,EEE,EE806,Major Project / Project Work
+4,8,MECH,ME801,Advanced Manufacturing
+4,8,MECH,ME802,Professional Elective-I
+4,8,MECH,ME803,Professional Elective-II
+4,8,MECH,ME804,Open Elective-I
+4,8,MECH,ME805,Project / Seminar
+4,8,MECH,ME806,Major Project / Project Work
+4,8,MET,MT801,Advanced Materials
+4,8,MET,MT802,Professional Elective-II
+4,8,MET,MT803,Professional Elective-III
+4,8,MET,MT804,Open Elective-I
+4,8,MET,MT805,Project / Seminar
+4,8,MET,MT806,Major Project / Project Work

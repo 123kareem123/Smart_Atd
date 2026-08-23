@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>View Attendance - SmartAttend</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f9;
+
+            color: #222;
+        }
+
+
+        /* =================================================
+           NAVBAR
+        ================================================= */
+
+        .navbar {
+            background: #182858;
+
+            color: white;
+
+            padding: 16px 30px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .navbar h2 {
+            margin: 0;
+
+            font-size: 22px;
+        }
+
+
+        .faculty-name {
+            font-size: 14px;
+        }
+
+
+        /* =================================================
+           CONTAINER
+        ================================================= */
+
+        .container {
+            width: 92%;
+
+            max-width: 1100px;
+
+            margin: 30px auto;
+        }
+
+
+        /* =================================================
+           NAVIGATION
+        ================================================= */
+
+        .navigation {
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 20px;
+        }
+
+
+        .nav-button {
+            display: inline-block;
+
+            padding: 10px 17px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+
+        .dashboard-button {
+            background: #182858;
+        }
+
+
+        .history-button {
+            background: #188038;
+        }
+
+
+        .nav-button:hover {
+            opacity: 0.85;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =================================================
+           HEADER CARD
+        ================================================= */
+
+        .header-card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.08);
+
+            margin-bottom: 25px;
+        }
+
+
+        .header-card h1 {
+            margin-top: 0;
+
+            margin-bottom: 20px;
+
+            color: #182858;
+        }
+
+
+        .info {
+            line-height: 1.9;
+
+            color: #444;
+        }
+
+
+        .info strong {
+            color: #222;
+        }
+
+
+        /* =================================================
+           SESSION STATUS
+        ================================================= */
+
+        .session-status {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            padding: 7px 14px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        .active {
+            background: #d9f5df;
+
+            color: #188038;
+        }
+
+
+        .closed {
+            background: #eeeeee;
+
+            color: #666;
+        }
+
+
+        /* =================================================
+           END ATTENDANCE
+        ================================================= */
+
+        .end-button {
+            margin-top: 20px;
+
+            padding: 11px 20px;
+
+            background: #dc3545;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                transform 0.15s ease,
+                box-shadow 0.2s ease;
+
+            box-shadow:
+                0 2px 5px rgba(0, 0, 0, 0.12);
+        }
+
+
+        .end-button:hover {
+            background: #b02a37;
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .end-button:active {
+            transform: scale(0.97);
+        }
+
+
+        /* =================================================
+           REPORT SUMMARY
+        ================================================= */
+
+        .report-summary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .report-card {
+
+            background: white;
+
+            padding: 22px 18px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.2s ease;
+        }
+
+
+        .report-card:hover {
+
+            transform: translateY(-3px);
+        }
+
+
+        .report-card h3 {
+
+            margin: 0 0 10px;
+
+            color: #666;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        .report-number {
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            color: #182858;
+        }
+
+
+        .present-number {
+
+            color: #188038;
+        }
+
+
+        .absent-number {
+
+            color: #d93025;
+        }
+
+
+        .percentage-number {
+
+            color: #182858;
+        }
+
+
+        /* =================================================
+           TABLE CARD
+        ================================================= */
+
+        .table-card {
+
+            background: white;
+
+            padding: 22px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.08);
+
+            overflow-x: auto;
+        }
+
+
+        .table-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 18px;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .table-header h2 {
+
+            margin: 0;
+
+            color: #182858;
+        }
+
+
+        .record-count {
+
+            color: #666;
+
+            font-size: 14px;
+        }
+
+
+        /* =================================================
+           TABLE
+        ================================================= */
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 650px;
+        }
+
+
+        th,
+        td {
+
+            padding: 13px;
+
+            border-bottom:
+                1px solid #e2e2e2;
+
+            text-align: left;
+        }
+
+
+        th {
+
+            background: #182858;
+
+            color: white;
+
+            font-size: 14px;
+        }
+
+
+        tbody tr:hover {
+
+            background: #f7f9fc;
+        }
+
+
+        /* =================================================
+           STATUS
+        ================================================= */
+
+        .status-badge {
+
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+
+        .present {
+
+            color: #188038;
+
+            background: #d9f5df;
+        }
+
+
+        .absent {
+
+            color: #d93025;
+
+            background: #fde2e2;
+        }
+
+
+        /* =================================================
+           MARKED TIME
+        ================================================= */
+
+        .marked-time {
+
+            color: #555;
+
+            font-size: 14px;
+        }
+
+
+        .not-marked {
+
+            color: #999;
+
+            font-size: 14px;
+        }
+
+
+        /* =================================================
+           EMPTY
+        ================================================= */
+
+        .empty {
+
+            text-align: center;
+
+            padding: 45px 20px;
+
+            color: #666;
+        }
+
+
+        .empty h3 {
+
+            color: #182858;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 800px) {
+
+            .report-summary {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                padding: 15px 18px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 6px;
+            }
+
+
+            .container {
+
+                width: 94%;
+
+                margin-top: 20px;
+            }
+
+
+            .header-card {
+
+                padding: 20px;
+            }
+
+
+            .table-card {
+
+                padding: 15px;
+            }
+
+
+            .report-summary {
+
+                grid-template-columns: 1fr 1fr;
+
+                gap: 10px;
+            }
+
+
+            .report-card {
+
+                padding: 18px 10px;
+            }
+
+
+            .report-number {
+
+                font-size: 25px;
+            }
+
+
+            .navigation {
+
+                width: 100%;
+            }
+
+
+            .nav-button {
+
+                flex: 1;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<div class="navbar">
+
+
+    <h2>
+        SmartAttend
+    </h2>
+
+
+    <div class="faculty-name">
+
+        Faculty:
+
+        {{ request.user.get_full_name|default:request.user.username }}
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     MAIN CONTAINER
+===================================================== -->
+
+<div class="container">
+
+
+    <!-- =================================================
+         NAVIGATION
+    ================================================== -->
+
+    <div class="navigation">
+
+
+        <a
+            href="{% url 'faculty_dashboard' %}"
+            class="nav-button dashboard-button"
+        >
+
+            🏠 Dashboard
+
+        </a>
+
+
+        <a
+            href="{% url 'faculty_attendance_history' %}"
+            class="nav-button history-button"
+        >
+
+            📊 Attendance History
+
+        </a>
+
+
+    </div>
+
+
+    <!-- =================================================
+         SESSION INFORMATION
+    ================================================== -->
+
+    <div class="header-card">
+
+
+        <h1>
+            Attendance Details
+        </h1>
+
+
+        <div class="info">
+
+
+            <div>
+
+                <strong>
+                    Subject:
+                </strong>
+
+                {{ session.teaching_assignment.subject.name }}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Subject Code:
+                </strong>
+
+                {{ session.teaching_assignment.subject.code }}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Class:
+                </strong>
+
+                {{ session.teaching_assignment.class_section }}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Period:
+                </strong>
+
+                {{ session.period }}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Date:
+                </strong>
+
+                {{ session.date }}
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SESSION STATUS -->
+
+        {% if session.is_active %}
+
+
+            <div class="session-status active">
+
+                ● Attendance Session Active
+
+            </div>
+
+
+        {% else %}
+
+
+            <div class="session-status closed">
+
+                ✓ Attendance Session Closed
+
+            </div>
+
+
+        {% endif %}
+
+
+        <!-- END ATTENDANCE -->
+
+        {% if session.is_active %}
+
+
+            <form
+                method="POST"
+                action="{% url 'end_attendance' session.id %}"
+                onsubmit="
+                    return confirm(
+                        'Are you sure you want to end this attendance session?'
+                    );
+                "
+            >
+
+
+                {% csrf_token %}
+
+
+                <button
+                    type="submit"
+                    class="end-button"
+                >
+
+                    🔴 End Attendance
+
+                </button>
+
+
+            </form>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+    <!-- =================================================
+         REPORT SUMMARY
+    ================================================== -->
+
+    <div class="report-summary">
+
+
+        <!-- TOTAL -->
+
+        <div class="report-card">
+
+
+            <h3>
+                Total Students
+            </h3>
+
+
+            <div class="report-number">
+
+                {{ total_students }}
+
+            </div>
+
+
+        </div>
+
+
+        <!-- PRESENT -->
+
+        <div class="report-card">
+
+
+            <h3>
+                Present
+            </h3>
+
+
+            <div class="report-number present-number">
+
+                {{ present_count }}
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ABSENT -->
+
+        <div class="report-card">
+
+
+            <h3>
+                Absent
+            </h3>
+
+
+            <div class="report-number absent-number">
+
+                {{ absent_count }}
+
+            </div>
+
+
+        </div>
+
+
+        <!-- PERCENTAGE -->
+
+        <div class="report-card">
+
+
+            <h3>
+                Attendance
+            </h3>
+
+
+            <div class="report-number percentage-number">
+
+                {{ percentage }}%
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         STUDENT ATTENDANCE
+    ================================================== -->
+
+    <div class="table-card">
+
+
+        <div class="table-header">
+
+
+            <h2>
+                Student Attendance
+            </h2>
+
+
+            <div class="record-count">
+
+                {{ total_students }} Students
+
+            </div>
+
+
+        </div>
+
+
+        {% if attendance_data %}
+
+
+            <table>
+
+
+                <thead>
+
+                    <tr>
+
+
+                        <th>
+                            #
+                        </th>
+
+
+                        <th>
+                            Student ID
+                        </th>
+
+
+                        <th>
+                            Student Name
+                        </th>
+
+
+                        <th>
+                            Status
+                        </th>
+
+
+                        <th>
+                            Marked At
+                        </th>
+
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for item in attendance_data %}
+
+
+                        <tr>
+
+
+                            <!-- NUMBER -->
+
+                            <td>
+
+                                {{ forloop.counter }}
+
+                            </td>
+
+
+                            <!-- STUDENT ID -->
+
+                            <td>
+
+                                <strong>
+                                    {{ item.student.student_id }}
+                                </strong>
+
+                            </td>
+
+
+                            <!-- STUDENT NAME -->
+
+                            <td>
+
+                                {{ item.student.user.get_full_name|default:item.student.user.username }}
+
+                            </td>
+
+
+                            <!-- STATUS -->
+
+                            <td>
+
+
+                                {% if item.status == "PRESENT" %}
+
+
+                                    <span class="status-badge present">
+
+                                        ✓ PRESENT
+
+                                    </span>
+
+
+                                {% else %}
+
+
+                                    <span class="status-badge absent">
+
+                                        ✕ ABSENT
+
+                                    </span>
+
+
+                                {% endif %}
+
+
+                            </td>
+
+
+                            <!-- MARKED TIME -->
+
+                            <td>
+
+
+                                {% if item.marked_at %}
+
+
+                                    <span class="marked-time">
+
+                                        {{ item.marked_at|date:"d M Y, h:i A" }}
+
+                                    </span>
+
+
+                                {% else %}
+
+
+                                    <span class="not-marked">
+
+                                        Not marked
+
+                                    </span>
+
+
+                                {% endif %}
+
+
+                            </td>
+
+
+                        </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+
+            </table>
+
+
+        {% else %}
+
+
+            <div class="empty">
+
+
+                <h3>
+                    No Students Found
+                </h3>
+
+
+                <p>
+
+                    There are no students assigned
+                    to this class.
+
+                </p>
+
+
+            </div>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

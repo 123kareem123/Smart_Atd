@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% if role == "faculty" %}
+            Faculty Login
+        {% else %}
+            Student Login
+        {% endif %}
+        - SmartAttend
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f9;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+        .login-card {
+
+            width: 90%;
+
+            max-width: 420px;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+
+            text-align: center;
+
+            color: #182858;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #666;
+
+            margin-bottom: 25px;
+        }
+
+        label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 12px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            font-size: 15px;
+        }
+
+        button {
+
+            width: 100%;
+
+            padding: 13px;
+
+            background: #182858;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+
+            background: #263b7a;
+        }
+
+        .error {
+
+            background: #f8d7da;
+
+            color: #721c24;
+
+            padding: 12px;
+
+            border-radius: 6px;
+
+            margin-bottom: 18px;
+
+            text-align: center;
+        }
+
+        .back {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #182858;
+
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-card">
+
+
+    {% if role == "faculty" %}
+
+        <h1>
+            Faculty Login
+        </h1>
+
+        <div class="subtitle">
+            Login to manage attendance
+        </div>
+
+    {% else %}
+
+        <h1>
+            Student Login
+        </h1>
+
+        <div class="subtitle">
+            Login to mark attendance
+        </div>
+
+    {% endif %}
+
+
+    {% if error %}
+
+        <div class="error">
+            {{ error }}
+        </div>
+
+    {% endif %}
+
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+
+        <label>
+            Username
+        </label>
+
+        <input
+            type="text"
+            name="username"
+            placeholder="Enter username"
+            required
+        >
+
+
+        <label>
+            Password
+        </label>
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            required
+        >
+
+
+        <button type="submit">
+
+            {% if role == "faculty" %}
+                Login as Faculty
+            {% else %}
+                Login as Student
+            {% endif %}
+
+        </button>
+
+    </form>
+
+
+    <a
+        href="{% url 'landing_page' %}"
+        class="back"
+    >
+        ← Back to Home
+    </a>
+
+
+</div>
+
+
+</body>
+
+</html>
