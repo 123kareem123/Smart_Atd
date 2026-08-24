@@ -35,6 +35,7 @@ class Command(BaseCommand):
             )
 
             if created:
+
                 created_departments += 1
 
                 self.stdout.write(
@@ -44,6 +45,7 @@ class Command(BaseCommand):
                 )
 
             else:
+
                 self.stdout.write(
                     f"Department already exists: {name} ({code})"
                 )
@@ -56,16 +58,35 @@ class Command(BaseCommand):
 
                 for section in ["A", "B", "C"]:
 
-                    class_section, created = (
-                        ClassSection.objects.get_or_create(
+                    sections = ClassSection.objects.filter(
+                        department=department,
+                        year=year,
+                        section=section
+                    )
+
+                    if sections.exists():
+
+                        self.stdout.write(
+                            f"Section already exists: "
+                            f"{code} Year {year} Section {section}"
+                        )
+
+                    else:
+
+                        ClassSection.objects.create(
                             department=department,
                             year=year,
                             section=section
                         )
-                    )
 
-                    if created:
                         created_sections += 1
+
+                        self.stdout.write(
+                            self.style.SUCCESS(
+                                f"Created section: "
+                                f"{code} Year {year} Section {section}"
+                            )
+                        )
 
         # =====================================================
         # RESULT
